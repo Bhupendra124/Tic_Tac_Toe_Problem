@@ -24,8 +24,7 @@ public class TicTacToi {
         Scanner s = new Scanner(System.in);
         int i, j, i1, j1, flag = 0;
 
-        for (int ir = 0; ir < 3; ir++)
-        {
+        for (int ir = 0; ir < 3; ir++) {
             for (int jc = 0; jc < 3; jc++)  //to initializ blank space
             {
                 a[ir][jc] = " ";
@@ -37,12 +36,66 @@ public class TicTacToi {
         System.out.println("Let's start the game ");
         TicTacToi ob = new TicTacToi();
         System.out.println();
-       ob.printboard(a);
+        ob.printboard(a);
 
+        while (flag != 1) {
+            System.out.println("Enter Position of Player 1");
+            i = s.nextInt();
+            j = s.nextInt();
+            a[i][j] = "X";
+            ob.printboard(a);
+            if (ob.check(a) == true) {
+                flag = 1;
+                System.out.println("Player 1 is won");
+                break;
+            }
+            System.out.println("enter position of Player 2");
+            i = s.nextInt();
+            j = s.nextInt();
+            a[i][j] = "0";
+            ob.printboard(a);
+            if (ob.check(a) == true)
+            {
+                flag=1;
+                System.out.println("player 2 win");
+              break;
+            }
+        }
 
+        }
+
+        boolean check (String a[][]){
+            if (a[0][0] == a[0][1] && a[0][1] == a[0][2] && a[0][2] == a[0][0] && a[0][0] == "X")
+                return true;
+            else if (a[1][2] == a[1][1] && a[1][1] == a[1][0] && a[1][0] == a[1][2] && a[1][1] == "X")
+                return true;
+            else if (a[2][1] == a[2][2] && a[2][2] == a[2][0] && a[2][0] == a[2][1] && a[2][2] == "X")
+                return true;
+            else if (a[0][0] == a[1][0] && a[1][0] == a[2][0] && a[2][0] == a[0][0] && a[0][0] == "X")
+                return true;
+            else if (a[0][1] == a[1][1] && a[1][1] == a[2][1] && a[2][1] == a[0][1] && a[0][1] == "X")
+                return true;
+            if (a[0][0] == a[1][1] && a[1][1] == a[2][2] && a[2][2] == a[0][0] && a[2][2] == "X")
+                return true;
+            if (a[0][2] == a[1][1] && a[1][1] == a[2][0] && a[2][0] == a[0][2] && a[2][0] == "X")
+                return true;
+            if (a[0][0] == a[0][1] && a[0][1] == a[0][2] && a[0][2] == a[0][0] && a[0][0] == "O")
+                return true;
+            else if (a[1][2] == a[1][1] && a[1][1] == a[1][0] && a[1][0] == a[1][2] && a[1][1] == "O")
+                return true;
+            else if (a[2][1] == a[2][2] && a[2][2] == a[2][0] && a[2][0] == a[2][1] && a[2][2] == "O")
+                return true;
+            else if (a[0][0] == a[1][0] && a[1][0] == a[2][0] && a[2][0] == a[0][0] && a[0][0] == "O")
+                return true;
+            else if (a[0][1] == a[1][1] && a[1][1] == a[2][1] && a[2][1] == a[0][1] && a[0][1] == "O")
+                return true;
+            if (a[0][0] == a[1][1] && a[1][1] == a[2][2] && a[2][2] == a[0][0] && a[2][2] == "O")
+                return true;
+            if (a[0][2] == a[1][1] && a[1][1] == a[2][0] && a[2][0] == a[0][2] && a[2][0] == "O")
+                return true;
+            else
+                return false;
+        }
 
 
     }
-
-
-}
